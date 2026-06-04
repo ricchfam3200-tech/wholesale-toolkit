@@ -857,7 +857,6 @@ function Mail() {
    SHELL
 ───────────────────────────────────────────────────────────── */
 const TABS = [
-  { id: "agent",    label: "✦ AI Agent", C: AIAgent    },
   { id: "leads",    label: "Leads",      C: Leads      },
   { id: "mail",     label: "Mail",       C: Mail       },
   { id: "start",    label: "Start Here", C: StartHere  },
@@ -868,7 +867,7 @@ const TABS = [
 ];
 
 export default function App() {
-  const [tab, setTab] = useState("mail");
+  const [tab, setTab] = useState("leads");
   const Active = TABS.find((t) => t.id === tab).C;
 
   return (
