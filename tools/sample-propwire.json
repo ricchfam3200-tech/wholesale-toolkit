@@ -1,0 +1,8 @@
+[
+  { "owner": "Anthony Andrews", "address": "7868 Green Lawn Dr, Houston TX 77088", "equityPercent": 100, "equityUsd": 180000, "ownedYears": 30, "ownedMonthsExtra": 10, "ownerState": "CO" },
+  { "owner": "Anthony Andrews", "address": "7866 Green Lawn Dr, Houston TX 77088", "equityPercent": 100, "equityUsd": 195768, "ownedYears": 26, "ownerState": "CO" },
+  { "owner": "Joyce Breeler", "address": "8911 Lakeworth Dr, Houston TX 77088", "equityPercent": 100, "equityUsd": 221837, "ownedYears": 30, "ownedMonthsExtra": 3, "ownerState": "TN" },
+  { "owner": "Alberto Rico", "address": "5318 Pate Rd, Houston TX 77016", "equityPercent": 111, "equityUsd": 254207, "ownedYears": 25, "ownedMonthsExtra": 11, "ownerState": "TX" },
+  { "owner": "Deborah Lewis", "address": "6107 Elkwood Forest Dr, Houston TX 77088", "equityPercent": 100, "equityUsd": 222097, "purchasedOn": "1999-03-01", "ownerState": "LA" },
+  { "owner": "Chimira Keener", "address": "7326 Yoe St, Houston TX 77016", "equityPercent": 100, "equityUsd": "$158,882", "ownedMonths": 389, "ownerState": "TX" }
+]
