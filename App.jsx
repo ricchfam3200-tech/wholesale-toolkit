@@ -538,26 +538,24 @@ function AIAgent() {
     setBusy(true);
     setError("");
     try {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
+      const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1000,
           system: SYSTEM_PROMPT,
           messages: next.map((m) => ({ role: m.role, content: m.content })),
         }),
       });
       const data = await res.json().catch(() => null);
       if (!res.ok || !data) {
-        setError("The live AI agent can't run inside the mobile preview. Open this toolkit on desktop claude.ai and it'll work — or just ask Claude in the main chat to analyze your deal.");
+        setError(data?.error || "Something went wrong. Check that ANTHROPIC_API_KEY is set in Vercel.");
         setBusy(false);
         return;
       }
       const txt = (data.content || []).map((b) => (b.type === "text" ? b.text : "")).join("").trim();
       setMessages([...next, { role: "assistant", content: txt || "(no response)" }]);
     } catch {
-      setError("The live AI agent can't run inside the mobile preview. Open this toolkit on desktop claude.ai and it'll work — or just ask Claude in the main chat to analyze your deal.");
+      setError("Network error — could not reach the AI. Try again.");
     }
     setBusy(false);
   };
