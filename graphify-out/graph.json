@@ -1,0 +1,1782 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "ccr_session_lifecycle_hooks",
+        "label": "CCR Session Lifecycle Hooks (Start + Stop)",
+        "nodes": [
+          "claude_launcher_settings",
+          "claude_session_start_git_identity",
+          "claude_stop_hook_git_check",
+          "claude_stop_hook_reply_gate"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": ".claude/launcher-settings.json"
+      },
+      {
+        "id": "graphify_pipeline_references",
+        "label": "Graphify Pipeline Reference Documents",
+        "nodes": [
+          "graphify_skill_md",
+          "graphify_extraction_spec",
+          "graphify_query_md",
+          "graphify_update_md",
+          "graphify_hooks_md",
+          "graphify_exports_md",
+          "graphify_github_merge_md",
+          "graphify_transcribe_md",
+          "graphify_add_watch_md"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": ".claude/skills/graphify/SKILL.md"
+      },
+      {
+        "id": "git_identity_enforcement",
+        "label": "Git Commit Identity Enforcement System",
+        "nodes": [
+          "claude_session_start_git_identity",
+          "claude_stop_hook_git_check_unverifiable",
+          "ccr_commit_signing"
+        ],
+        "relation": "implement",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": ".claude/session-start-git-identity.sh"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "launcher-settings.json",
+      "file_type": "code",
+      "source_file": "/root/.claude/launcher-settings.json",
+      "source_location": "L1",
+      "id": "root_claude_launcher_settings_json",
+      "community": 4,
+      "norm_label": "launcher-settings.json"
+    },
+    {
+      "label": "$schema",
+      "file_type": "code",
+      "source_file": "/root/.claude/launcher-settings.json",
+      "source_location": "L2",
+      "id": "claude_launcher_settings_schema",
+      "community": 4,
+      "norm_label": "$schema"
+    },
+    {
+      "label": "hooks",
+      "file_type": "code",
+      "source_file": "/root/.claude/launcher-settings.json",
+      "source_location": "L3",
+      "id": "claude_launcher_settings_hooks",
+      "community": 4,
+      "norm_label": "hooks"
+    },
+    {
+      "label": "SessionStart",
+      "file_type": "code",
+      "source_file": "/root/.claude/launcher-settings.json",
+      "source_location": "L4",
+      "id": "claude_launcher_settings_hooks_sessionstart",
+      "community": 4,
+      "norm_label": "sessionstart"
+    },
+    {
+      "label": "Stop",
+      "file_type": "code",
+      "source_file": "/root/.claude/launcher-settings.json",
+      "source_location": "L14",
+      "id": "claude_launcher_settings_hooks_stop",
+      "community": 4,
+      "norm_label": "stop"
+    },
+    {
+      "label": "permissions",
+      "file_type": "code",
+      "source_file": "/root/.claude/launcher-settings.json",
+      "source_location": "L26",
+      "id": "claude_launcher_settings_permissions",
+      "community": 4,
+      "norm_label": "permissions"
+    },
+    {
+      "label": "allow",
+      "file_type": "code",
+      "source_file": "/root/.claude/launcher-settings.json",
+      "source_location": "L27",
+      "id": "claude_launcher_settings_permissions_allow",
+      "community": 4,
+      "norm_label": "allow"
+    },
+    {
+      "label": "policy-limits.json",
+      "file_type": "code",
+      "source_file": "/root/.claude/policy-limits.json",
+      "source_location": "L1",
+      "id": "root_claude_policy_limits_json",
+      "community": 5,
+      "norm_label": "policy-limits.json"
+    },
+    {
+      "label": "restrictions",
+      "file_type": "code",
+      "source_file": "/root/.claude/policy-limits.json",
+      "source_location": "L2",
+      "id": "claude_policy_limits_restrictions",
+      "community": 5,
+      "norm_label": "restrictions"
+    },
+    {
+      "label": "enforce_web_search_mcp_isolation",
+      "file_type": "code",
+      "source_file": "/root/.claude/policy-limits.json",
+      "source_location": "L3",
+      "id": "claude_policy_limits_restrictions_enforce_web_search_mcp_isolation",
+      "community": 5,
+      "norm_label": "enforce_web_search_mcp_isolation"
+    },
+    {
+      "label": "allowed",
+      "file_type": "code",
+      "source_file": "/root/.claude/policy-limits.json",
+      "source_location": "L4",
+      "id": "claude_policy_limits_enforce_web_search_mcp_isolation_allowed",
+      "community": 5,
+      "norm_label": "allowed"
+    },
+    {
+      "label": "compliance_taints",
+      "file_type": "code",
+      "source_file": "/root/.claude/policy-limits.json",
+      "source_location": "L7",
+      "id": "claude_policy_limits_compliance_taints",
+      "community": 5,
+      "norm_label": "compliance_taints"
+    },
+    {
+      "label": "session-start-git-identity.sh",
+      "file_type": "code",
+      "source_file": "/root/.claude/session-start-git-identity.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "id": "root_claude_session_start_git_identity_sh",
+      "community": 7,
+      "norm_label": "session-start-git-identity.sh"
+    },
+    {
+      "label": "session-start-git-identity.sh script",
+      "file_type": "code",
+      "source_file": "/root/.claude/session-start-git-identity.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "id": "root_claude_session_start_git_identity_sh__entry",
+      "community": 7,
+      "norm_label": "session-start-git-identity.sh script"
+    },
+    {
+      "label": "562.json",
+      "file_type": "code",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "id": "root_claude_sessions_562_json",
+      "community": 3,
+      "norm_label": "562.json"
+    },
+    {
+      "label": "pid",
+      "file_type": "code",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "id": "sessions_562_pid",
+      "community": 3,
+      "norm_label": "pid"
+    },
+    {
+      "label": "sessionId",
+      "file_type": "code",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "id": "sessions_562_sessionid",
+      "community": 3,
+      "norm_label": "sessionid"
+    },
+    {
+      "label": "cwd",
+      "file_type": "code",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "id": "sessions_562_cwd",
+      "community": 3,
+      "norm_label": "cwd"
+    },
+    {
+      "label": "startedAt",
+      "file_type": "code",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "id": "sessions_562_startedat",
+      "community": 3,
+      "norm_label": "startedat"
+    },
+    {
+      "label": "procStart",
+      "file_type": "code",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "id": "sessions_562_procstart",
+      "community": 3,
+      "norm_label": "procstart"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "id": "sessions_562_version",
+      "community": 3,
+      "norm_label": "version"
+    },
+    {
+      "label": "peerProtocol",
+      "file_type": "code",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "id": "sessions_562_peerprotocol",
+      "community": 3,
+      "norm_label": "peerprotocol"
+    },
+    {
+      "label": "kind",
+      "file_type": "code",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "id": "sessions_562_kind",
+      "community": 3,
+      "norm_label": "kind"
+    },
+    {
+      "label": "entrypoint",
+      "file_type": "code",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "id": "sessions_562_entrypoint",
+      "community": 3,
+      "norm_label": "entrypoint"
+    },
+    {
+      "label": "snapshot-bash-1780607025001-si2eha.sh",
+      "file_type": "code",
+      "source_file": "/root/.claude/shell-snapshots/snapshot-bash-1780607025001-si2eha.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "id": "root_claude_shell_snapshots_snapshot_bash_1780607025001_si2eha_sh",
+      "community": 6,
+      "norm_label": "snapshot-bash-1780607025001-si2eha.sh"
+    },
+    {
+      "label": "snapshot-bash-1780607025001-si2eha.sh script",
+      "file_type": "code",
+      "source_file": "/root/.claude/shell-snapshots/snapshot-bash-1780607025001-si2eha.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "id": "root_claude_shell_snapshots_snapshot_bash_1780607025001_si2eha_sh__entry",
+      "community": 6,
+      "norm_label": "snapshot-bash-1780607025001-si2eha.sh script"
+    },
+    {
+      "label": "PATH",
+      "file_type": "code",
+      "source_file": "/root/.claude/shell-snapshots/snapshot-bash-1780607025001-si2eha.sh",
+      "source_location": "L3056",
+      "metadata": {
+        "language": "bash",
+        "kind": "code"
+      },
+      "id": "shell_snapshots_snapshot_bash_1780607025001_si2eha_path",
+      "community": 6,
+      "norm_label": "path"
+    },
+    {
+      "label": "stop-hook-git-check.sh",
+      "file_type": "code",
+      "source_file": "/root/.claude/stop-hook-git-check.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "id": "root_claude_stop_hook_git_check_sh",
+      "community": 8,
+      "norm_label": "stop-hook-git-check.sh"
+    },
+    {
+      "label": "stop-hook-git-check.sh script",
+      "file_type": "code",
+      "source_file": "/root/.claude/stop-hook-git-check.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "id": "root_claude_stop_hook_git_check_sh__entry",
+      "community": 8,
+      "norm_label": "stop-hook-git-check.sh script"
+    },
+    {
+      "label": "stop-hook-reply-gate.py",
+      "file_type": "code",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L1",
+      "id": "root_claude_stop_hook_reply_gate_py",
+      "community": 2,
+      "norm_label": "stop-hook-reply-gate.py"
+    },
+    {
+      "label": "allow()",
+      "file_type": "code",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L41",
+      "id": "claude_stop_hook_reply_gate_allow",
+      "community": 2,
+      "norm_label": "allow()"
+    },
+    {
+      "label": "block()",
+      "file_type": "code",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L46",
+      "id": "claude_stop_hook_reply_gate_block",
+      "community": 2,
+      "norm_label": "block()"
+    },
+    {
+      "label": "is_opus()",
+      "file_type": "code",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L51",
+      "id": "claude_stop_hook_reply_gate_is_opus",
+      "community": 2,
+      "norm_label": "is_opus()"
+    },
+    {
+      "label": "read_transcript()",
+      "file_type": "code",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L55",
+      "id": "claude_stop_hook_reply_gate_read_transcript",
+      "community": 2,
+      "norm_label": "read_transcript()"
+    },
+    {
+      "label": "terminal_tools()",
+      "file_type": "code",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L72",
+      "id": "claude_stop_hook_reply_gate_terminal_tools",
+      "community": 2,
+      "norm_label": "terminal_tools()"
+    },
+    {
+      "label": "local_cap()",
+      "file_type": "code",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L81",
+      "id": "claude_stop_hook_reply_gate_local_cap",
+      "community": 2,
+      "norm_label": "local_cap()"
+    },
+    {
+      "label": "counter_file()",
+      "file_type": "code",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L88",
+      "id": "claude_stop_hook_reply_gate_counter_file",
+      "community": 2,
+      "norm_label": "counter_file()"
+    },
+    {
+      "label": "bump_counter()",
+      "file_type": "code",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L100",
+      "id": "claude_stop_hook_reply_gate_bump_counter",
+      "community": 2,
+      "norm_label": "bump_counter()"
+    },
+    {
+      "label": "turn_key()",
+      "file_type": "code",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L123",
+      "id": "claude_stop_hook_reply_gate_turn_key",
+      "community": 2,
+      "norm_label": "turn_key()"
+    },
+    {
+      "label": "build_reason()",
+      "file_type": "code",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L130",
+      "id": "claude_stop_hook_reply_gate_build_reason",
+      "community": 2,
+      "norm_label": "build_reason()"
+    },
+    {
+      "label": "run()",
+      "file_type": "code",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L148",
+      "id": "claude_stop_hook_reply_gate_run",
+      "community": 2,
+      "norm_label": "run()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L212",
+      "id": "claude_stop_hook_reply_gate_main",
+      "community": 2,
+      "norm_label": "main()"
+    },
+    {
+      "label": "Increment and persist the per-turn block count, resetting to 1 when the     turn",
+      "file_type": "rationale",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L101",
+      "id": "claude_stop_hook_reply_gate_rationale_101",
+      "community": 2,
+      "norm_label": "increment and persist the per-turn block count, resetting to 1 when the     turn"
+    },
+    {
+      "label": "Launcher Settings (Claude Code)",
+      "file_type": "document",
+      "source_file": ".claude/launcher-settings.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_launcher_settings",
+      "community": 0,
+      "norm_label": "launcher settings (claude code)"
+    },
+    {
+      "label": "Policy Limits (CCR)",
+      "file_type": "document",
+      "source_file": ".claude/policy-limits.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_policy_limits",
+      "community": 9,
+      "norm_label": "policy limits (ccr)"
+    },
+    {
+      "label": "Session Start Git Identity Script",
+      "file_type": "code",
+      "source_file": ".claude/session-start-git-identity.sh",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_session_start_git_identity",
+      "community": 0,
+      "norm_label": "session start git identity script"
+    },
+    {
+      "label": "git config global user.email/name",
+      "file_type": "code",
+      "source_file": ".claude/session-start-git-identity.sh",
+      "source_location": "line 21-22",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_session_start_git_identity_git_config",
+      "community": 0,
+      "norm_label": "git config global user.email/name"
+    },
+    {
+      "label": "Co-authored-by Trailer Git Hook",
+      "file_type": "code",
+      "source_file": ".claude/session-start-git-identity.sh",
+      "source_location": "line 70-100",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_session_start_git_identity_coauthor_hook",
+      "community": 0,
+      "norm_label": "co-authored-by trailer git hook"
+    },
+    {
+      "label": "Git Hook Passthrough Stubs",
+      "file_type": "code",
+      "source_file": ".claude/session-start-git-identity.sh",
+      "source_location": "line 43-59",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_session_start_git_identity_passthrough_hooks",
+      "community": 0,
+      "norm_label": "git hook passthrough stubs"
+    },
+    {
+      "label": "CCR Commit Signing Identity",
+      "file_type": "rationale",
+      "source_file": ".claude/session-start-git-identity.sh",
+      "source_location": "line 1-20",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "ccr_commit_signing",
+      "community": 0,
+      "norm_label": "ccr commit signing identity"
+    },
+    {
+      "label": "Session 562 Metadata",
+      "file_type": "document",
+      "source_file": ".claude/sessions/562.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_sessions_562",
+      "community": 0,
+      "norm_label": "session 562 metadata"
+    },
+    {
+      "label": "Stop Hook Git Check Script",
+      "file_type": "code",
+      "source_file": ".claude/stop-hook-git-check.sh",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_stop_hook_git_check",
+      "community": 0,
+      "norm_label": "stop hook git check script"
+    },
+    {
+      "label": "Uncommitted Changes Check",
+      "file_type": "code",
+      "source_file": ".claude/stop-hook-git-check.sh",
+      "source_location": "line 27-30",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_stop_hook_git_check_uncommitted",
+      "community": 0,
+      "norm_label": "uncommitted changes check"
+    },
+    {
+      "label": "Unverifiable Commit Check",
+      "file_type": "code",
+      "source_file": ".claude/stop-hook-git-check.sh",
+      "source_location": "line 53-60",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_stop_hook_git_check_unverifiable",
+      "community": 0,
+      "norm_label": "unverifiable commit check"
+    },
+    {
+      "label": "Unpushed Commits Check",
+      "file_type": "code",
+      "source_file": ".claude/stop-hook-git-check.sh",
+      "source_location": "line 63-71",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_stop_hook_git_check_unpushed",
+      "community": 0,
+      "norm_label": "unpushed commits check"
+    },
+    {
+      "label": "Stop Hook Reply Gate (Slackbot v2)",
+      "file_type": "code",
+      "source_file": ".claude/stop-hook-reply-gate.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_stop_hook_reply_gate",
+      "community": 0,
+      "norm_label": "stop hook reply gate (slackbot v2)"
+    },
+    {
+      "label": "CCR Slackbot Reply Gate Mechanism",
+      "file_type": "rationale",
+      "source_file": ".claude/stop-hook-reply-gate.py",
+      "source_location": "line 1-17",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "ccr_reply_gate_mechanism",
+      "community": 0,
+      "norm_label": "ccr slackbot reply gate mechanism"
+    },
+    {
+      "label": "CLAUDE.md - Graphify Skill Registration",
+      "file_type": "document",
+      "source_file": ".claude/CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_claude_md",
+      "community": 1,
+      "norm_label": "claude.md - graphify skill registration"
+    },
+    {
+      "label": "Graphify Skill - Full Pipeline Spec",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_skill_md",
+      "community": 1,
+      "norm_label": "graphify skill - full pipeline spec"
+    },
+    {
+      "label": "Graphify Pipeline (Steps 1-9)",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": "Steps 1-9",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_skill_pipeline",
+      "community": 1,
+      "norm_label": "graphify pipeline (steps 1-9)"
+    },
+    {
+      "label": "Graphify Query Fast Path",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": "For /graphify query",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_skill_query",
+      "community": 1,
+      "norm_label": "graphify query fast path"
+    },
+    {
+      "label": "Graphify Extraction Subagent Prompt Spec",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/extraction-spec.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_extraction_spec",
+      "community": 1,
+      "norm_label": "graphify extraction subagent prompt spec"
+    },
+    {
+      "label": "Node ID Format Rules",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/references/extraction-spec.md",
+      "source_location": "Node ID format section",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_extraction_spec_node_id_format",
+      "community": 1,
+      "norm_label": "node id format rules"
+    },
+    {
+      "label": "Confidence Score Rubric",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/references/extraction-spec.md",
+      "source_location": "confidence_score section",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_extraction_spec_confidence_rubric",
+      "community": 1,
+      "norm_label": "confidence score rubric"
+    },
+    {
+      "label": "Graphify Query/Path/Explain Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/query.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_query_md",
+      "community": 1,
+      "norm_label": "graphify query/path/explain reference"
+    },
+    {
+      "label": "Constrained Query Vocab Expansion",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/references/query.md",
+      "source_location": "Step 0",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_query_md_vocab_expansion",
+      "community": 1,
+      "norm_label": "constrained query vocab expansion"
+    },
+    {
+      "label": "Graphify Add URL and Watch Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/add-watch.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_add_watch_md",
+      "community": 1,
+      "norm_label": "graphify add url and watch reference"
+    },
+    {
+      "label": "Graphify Extra Exports Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/exports.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_exports_md",
+      "community": 1,
+      "norm_label": "graphify extra exports reference"
+    },
+    {
+      "label": "Graphify GitHub Clone and Merge Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/github-and-merge.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_github_merge_md",
+      "community": 1,
+      "norm_label": "graphify github clone and merge reference"
+    },
+    {
+      "label": "Graphify Hooks and CLAUDE.md Integration Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/hooks.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_hooks_md",
+      "community": 1,
+      "norm_label": "graphify hooks and claude.md integration reference"
+    },
+    {
+      "label": "Graphify Transcribe Video/Audio Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/transcribe.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_transcribe_md",
+      "community": 1,
+      "norm_label": "graphify transcribe video/audio reference"
+    },
+    {
+      "label": "Graphify Incremental Update Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/update.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_update_md",
+      "community": 1,
+      "norm_label": "graphify incremental update reference"
+    },
+    {
+      "label": "Session Start Hook Skill",
+      "file_type": "document",
+      "source_file": ".claude/skills/session-start-hook/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "session_start_hook_skill_md",
+      "community": 0,
+      "norm_label": "session start hook skill"
+    },
+    {
+      "label": "Session Start Hook Workflow (Steps 1-8)",
+      "file_type": "concept",
+      "source_file": ".claude/skills/session-start-hook/SKILL.md",
+      "source_location": "Workflow section",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "session_start_hook_skill_workflow",
+      "community": 0,
+      "norm_label": "session start hook workflow (steps 1-8)"
+    },
+    {
+      "label": "CCR_SESSION_ACCOUNT_EMAIL Env Var",
+      "file_type": "concept",
+      "source_file": ".claude/session-start-git-identity.sh",
+      "source_location": "line 34",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "ccr_session_account_email",
+      "community": 0,
+      "norm_label": "ccr_session_account_email env var"
+    },
+    {
+      "label": "CCR Reply Stop Hook Env Vars",
+      "file_type": "concept",
+      "source_file": ".claude/stop-hook-reply-gate.py",
+      "source_location": "line 73-83",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "ccr_reply_stop_hook_env_vars",
+      "community": 0,
+      "norm_label": "ccr reply stop hook env vars"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/launcher-settings.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "root_claude_launcher_settings_json",
+      "target": "claude_launcher_settings_hooks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/launcher-settings.json",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "root_claude_launcher_settings_json",
+      "target": "claude_launcher_settings_permissions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/launcher-settings.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "root_claude_launcher_settings_json",
+      "target": "claude_launcher_settings_schema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/launcher-settings.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "claude_launcher_settings_hooks",
+      "target": "claude_launcher_settings_hooks_sessionstart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/launcher-settings.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "claude_launcher_settings_hooks",
+      "target": "claude_launcher_settings_hooks_stop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/launcher-settings.json",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "claude_launcher_settings_permissions",
+      "target": "claude_launcher_settings_permissions_allow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/policy-limits.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "root_claude_policy_limits_json",
+      "target": "claude_policy_limits_compliance_taints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/policy-limits.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "root_claude_policy_limits_json",
+      "target": "claude_policy_limits_restrictions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/policy-limits.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "claude_policy_limits_restrictions",
+      "target": "claude_policy_limits_restrictions_enforce_web_search_mcp_isolation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/policy-limits.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "claude_policy_limits_restrictions_enforce_web_search_mcp_isolation",
+      "target": "claude_policy_limits_enforce_web_search_mcp_isolation_allowed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/session-start-git-identity.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "root_claude_session_start_git_identity_sh",
+      "target": "root_claude_session_start_git_identity_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "root_claude_sessions_562_json",
+      "target": "sessions_562_cwd",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "root_claude_sessions_562_json",
+      "target": "sessions_562_entrypoint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "root_claude_sessions_562_json",
+      "target": "sessions_562_kind",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "root_claude_sessions_562_json",
+      "target": "sessions_562_peerprotocol",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "root_claude_sessions_562_json",
+      "target": "sessions_562_pid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "root_claude_sessions_562_json",
+      "target": "sessions_562_procstart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "root_claude_sessions_562_json",
+      "target": "sessions_562_sessionid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "root_claude_sessions_562_json",
+      "target": "sessions_562_startedat",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/sessions/562.json",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "root_claude_sessions_562_json",
+      "target": "sessions_562_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/shell-snapshots/snapshot-bash-1780607025001-si2eha.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "root_claude_shell_snapshots_snapshot_bash_1780607025001_si2eha_sh",
+      "target": "root_claude_shell_snapshots_snapshot_bash_1780607025001_si2eha_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/shell-snapshots/snapshot-bash-1780607025001-si2eha.sh",
+      "source_location": "L3056",
+      "weight": 1.0,
+      "source": "root_claude_shell_snapshots_snapshot_bash_1780607025001_si2eha_sh",
+      "target": "shell_snapshots_snapshot_bash_1780607025001_si2eha_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-git-check.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "root_claude_stop_hook_git_check_sh",
+      "target": "root_claude_stop_hook_git_check_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "root_claude_stop_hook_reply_gate_py",
+      "target": "claude_stop_hook_reply_gate_allow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "root_claude_stop_hook_reply_gate_py",
+      "target": "claude_stop_hook_reply_gate_block",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L130",
+      "weight": 1.0,
+      "source": "root_claude_stop_hook_reply_gate_py",
+      "target": "claude_stop_hook_reply_gate_build_reason",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "source": "root_claude_stop_hook_reply_gate_py",
+      "target": "claude_stop_hook_reply_gate_bump_counter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "root_claude_stop_hook_reply_gate_py",
+      "target": "claude_stop_hook_reply_gate_counter_file",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "root_claude_stop_hook_reply_gate_py",
+      "target": "claude_stop_hook_reply_gate_is_opus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "root_claude_stop_hook_reply_gate_py",
+      "target": "claude_stop_hook_reply_gate_local_cap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L212",
+      "weight": 1.0,
+      "source": "root_claude_stop_hook_reply_gate_py",
+      "target": "claude_stop_hook_reply_gate_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "root_claude_stop_hook_reply_gate_py",
+      "target": "claude_stop_hook_reply_gate_read_transcript",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L148",
+      "weight": 1.0,
+      "source": "root_claude_stop_hook_reply_gate_py",
+      "target": "claude_stop_hook_reply_gate_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "root_claude_stop_hook_reply_gate_py",
+      "target": "claude_stop_hook_reply_gate_terminal_tools",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L123",
+      "weight": 1.0,
+      "source": "root_claude_stop_hook_reply_gate_py",
+      "target": "claude_stop_hook_reply_gate_turn_key",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L154",
+      "weight": 1.0,
+      "source": "claude_stop_hook_reply_gate_run",
+      "target": "claude_stop_hook_reply_gate_allow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L209",
+      "weight": 1.0,
+      "source": "claude_stop_hook_reply_gate_run",
+      "target": "claude_stop_hook_reply_gate_block",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L168",
+      "weight": 1.0,
+      "source": "claude_stop_hook_reply_gate_run",
+      "target": "claude_stop_hook_reply_gate_is_opus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L156",
+      "weight": 1.0,
+      "source": "claude_stop_hook_reply_gate_run",
+      "target": "claude_stop_hook_reply_gate_read_transcript",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/stop-hook-reply-gate.py",
+      "source_location": "line 184",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_stop_hook_reply_gate_run",
+      "target": "claude_stop_hook_reply_gate_terminal_tools"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L201",
+      "weight": 1.0,
+      "source": "claude_stop_hook_reply_gate_run",
+      "target": "claude_stop_hook_reply_gate_local_cap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "claude_stop_hook_reply_gate_bump_counter",
+      "target": "claude_stop_hook_reply_gate_counter_file",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "claude_stop_hook_reply_gate_rationale_101",
+      "target": "claude_stop_hook_reply_gate_bump_counter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/stop-hook-reply-gate.py",
+      "source_location": "line 199",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_stop_hook_reply_gate_run",
+      "target": "claude_stop_hook_reply_gate_bump_counter"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L199",
+      "weight": 1.0,
+      "source": "claude_stop_hook_reply_gate_run",
+      "target": "claude_stop_hook_reply_gate_turn_key",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/stop-hook-reply-gate.py",
+      "source_location": "line 209",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_stop_hook_reply_gate_run",
+      "target": "claude_stop_hook_reply_gate_build_reason"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/stop-hook-reply-gate.py",
+      "source_location": "line 212",
+      "weight": 1.0,
+      "source": "claude_stop_hook_reply_gate",
+      "target": "claude_stop_hook_reply_gate_run"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/root/.claude/stop-hook-reply-gate.py",
+      "source_location": "L214",
+      "weight": 1.0,
+      "source": "claude_stop_hook_reply_gate_main",
+      "target": "claude_stop_hook_reply_gate_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/launcher-settings.json",
+      "source_location": "SessionStart hook command",
+      "weight": 1.0,
+      "source": "claude_launcher_settings",
+      "target": "claude_session_start_git_identity"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/launcher-settings.json",
+      "source_location": "Stop hook command",
+      "weight": 1.0,
+      "source": "claude_launcher_settings",
+      "target": "claude_stop_hook_git_check"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": ".claude/skills/session-start-hook/SKILL.md",
+      "source_location": "Step 4 Register in Settings",
+      "weight": 1.0,
+      "source": "session_start_hook_skill_md",
+      "target": "claude_launcher_settings"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/session-start-git-identity.sh",
+      "source_location": "line 1-20",
+      "weight": 1.0,
+      "source": "ccr_commit_signing",
+      "target": "claude_session_start_git_identity"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/session-start-git-identity.sh",
+      "source_location": "line 34",
+      "weight": 1.0,
+      "source": "claude_session_start_git_identity",
+      "target": "ccr_session_account_email"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/session-start-git-identity.sh",
+      "source_location": "line 70-100",
+      "weight": 1.0,
+      "source": "claude_session_start_git_identity",
+      "target": "claude_session_start_git_identity_coauthor_hook"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/session-start-git-identity.sh",
+      "source_location": "line 21-22",
+      "weight": 1.0,
+      "source": "claude_session_start_git_identity",
+      "target": "claude_session_start_git_identity_git_config"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/session-start-git-identity.sh",
+      "source_location": "line 43-59",
+      "weight": 1.0,
+      "source": "claude_session_start_git_identity",
+      "target": "claude_session_start_git_identity_passthrough_hooks"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": ".claude/session-start-git-identity.sh",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_session_start_git_identity",
+      "target": "session_start_hook_skill_md"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": ".claude/stop-hook-git-check.sh",
+      "source_location": "line 53-58",
+      "weight": 1.0,
+      "source": "claude_stop_hook_git_check",
+      "target": "claude_session_start_git_identity"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": ".claude/stop-hook-git-check.sh",
+      "source_location": "line 53-60",
+      "weight": 1.0,
+      "source": "claude_stop_hook_git_check_unverifiable",
+      "target": "ccr_commit_signing"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.55,
+      "source_file": ".claude/sessions/562.json",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_sessions_562",
+      "target": "claude_stop_hook_git_check"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/stop-hook-git-check.sh",
+      "source_location": "line 27-30",
+      "weight": 1.0,
+      "source": "claude_stop_hook_git_check",
+      "target": "claude_stop_hook_git_check_uncommitted"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/stop-hook-git-check.sh",
+      "source_location": "line 63-71",
+      "weight": 1.0,
+      "source": "claude_stop_hook_git_check",
+      "target": "claude_stop_hook_git_check_unpushed"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/stop-hook-git-check.sh",
+      "source_location": "line 53-60",
+      "weight": 1.0,
+      "source": "claude_stop_hook_git_check",
+      "target": "claude_stop_hook_git_check_unverifiable"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": ".claude/stop-hook-reply-gate.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_stop_hook_reply_gate",
+      "target": "claude_stop_hook_git_check"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/stop-hook-reply-gate.py",
+      "source_location": "line 1-17",
+      "weight": 1.0,
+      "source": "ccr_reply_gate_mechanism",
+      "target": "claude_stop_hook_reply_gate"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/stop-hook-reply-gate.py",
+      "source_location": "line 73-83",
+      "weight": 1.0,
+      "source": "claude_stop_hook_reply_gate",
+      "target": "ccr_reply_stop_hook_env_vars"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/CLAUDE.md",
+      "source_location": "line 2-3",
+      "weight": 1.0,
+      "source": "claude_claude_md",
+      "target": "graphify_skill_md"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": ".claude/skills/graphify/references/hooks.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "graphify_hooks_md",
+      "target": "graphify_skill_md"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": "For /graphify add and --watch",
+      "weight": 1.0,
+      "source": "graphify_skill_md",
+      "target": "graphify_add_watch_md"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": "Steps 6b-8",
+      "weight": 1.0,
+      "source": "graphify_skill_md",
+      "target": "graphify_exports_md"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": "Step 3 Part B",
+      "weight": 1.0,
+      "source": "graphify_skill_md",
+      "target": "graphify_extraction_spec"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": "Step 0",
+      "weight": 1.0,
+      "source": "graphify_skill_md",
+      "target": "graphify_github_merge_md"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": "For /graphify query",
+      "weight": 1.0,
+      "source": "graphify_skill_md",
+      "target": "graphify_query_md"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": "Steps 1-9",
+      "weight": 1.0,
+      "source": "graphify_skill_md",
+      "target": "graphify_skill_pipeline"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": "For /graphify query",
+      "weight": 1.0,
+      "source": "graphify_skill_md",
+      "target": "graphify_skill_query"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": "Step 2.5",
+      "weight": 1.0,
+      "source": "graphify_skill_md",
+      "target": "graphify_transcribe_md"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": "For --update and --cluster-only",
+      "weight": 1.0,
+      "source": "graphify_skill_md",
+      "target": "graphify_update_md"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": ".claude/skills/graphify/references/update.md",
+      "source_location": "Then run Steps 4-8",
+      "weight": 1.0,
+      "source": "graphify_update_md",
+      "target": "graphify_skill_pipeline"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/references/extraction-spec.md",
+      "source_location": "confidence_score section",
+      "weight": 1.0,
+      "source": "graphify_extraction_spec",
+      "target": "graphify_extraction_spec_confidence_rubric"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/references/extraction-spec.md",
+      "source_location": "Node ID format section",
+      "weight": 1.0,
+      "source": "graphify_extraction_spec",
+      "target": "graphify_extraction_spec_node_id_format"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/references/query.md",
+      "source_location": "Step 0",
+      "weight": 1.0,
+      "source": "graphify_query_md",
+      "target": "graphify_query_md_vocab_expansion"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/session-start-hook/SKILL.md",
+      "source_location": "Workflow section",
+      "weight": 1.0,
+      "source": "session_start_hook_skill_md",
+      "target": "session_start_hook_skill_workflow"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "ccr_session_lifecycle_hooks",
+      "label": "CCR Session Lifecycle Hooks (Start + Stop)",
+      "nodes": [
+        "claude_launcher_settings",
+        "claude_session_start_git_identity",
+        "claude_stop_hook_git_check",
+        "claude_stop_hook_reply_gate"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/launcher-settings.json"
+    },
+    {
+      "id": "graphify_pipeline_references",
+      "label": "Graphify Pipeline Reference Documents",
+      "nodes": [
+        "graphify_skill_md",
+        "graphify_extraction_spec",
+        "graphify_query_md",
+        "graphify_update_md",
+        "graphify_hooks_md",
+        "graphify_exports_md",
+        "graphify_github_merge_md",
+        "graphify_transcribe_md",
+        "graphify_add_watch_md"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md"
+    },
+    {
+      "id": "git_identity_enforcement",
+      "label": "Git Commit Identity Enforcement System",
+      "nodes": [
+        "claude_session_start_git_identity",
+        "claude_stop_hook_git_check_unverifiable",
+        "ccr_commit_signing"
+      ],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": ".claude/session-start-git-identity.sh"
+    }
+  ],
+  "built_at_commit": "3d3c2815b92b02653fa8f513cc6ba3aaacd6f493"
+}
