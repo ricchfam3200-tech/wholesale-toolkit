@@ -31,10 +31,15 @@
        propertyState:"TX"          // defaults to "TX"       (optional)
      }
 
+   A CSV export (Propwire's "download", or a hand-built list) is also accepted
+   directly — see `parseCsv` / `mapPropwireCsv` below for the column mapping.
+
    ── CLI ──────────────────────────────────────────────────────────────────
-     node tools/propwire-to-leads.mjs raw.json            # paste-ready JS
-     node tools/propwire-to-leads.mjs raw.json --json     # JSON array
-     node tools/propwire-to-leads.mjs raw.json --out leads.json
+     node tools/propwire-to-leads.mjs leads.csv           # paste-ready JS
+     node tools/propwire-to-leads.mjs raw.json            # JSON also works
+     node tools/propwire-to-leads.mjs leads.csv --json    # JSON array out
+     node tools/propwire-to-leads.mjs leads.csv --rescore # re-rank by score
+     node tools/propwire-to-leads.mjs leads.csv --out leads.json
    ───────────────────────────────────────────────────────────────────────── */
 
 const HOME_STATE = "TX";
@@ -76,6 +81,16 @@ function toOwnedMonths(row, asOf = new Date()) {
     }
   }
   return null;
+}
+
+// "30 yrs 10 mo" | "28 yrs" -> 370   (inverse of formatLen; null if unknown)
+function parseLenToMonths(v) {
+  if (v == null || v === "") return null;
+  const s = String(v).toLowerCase();
+  const y = s.match(/(\d+)\s*yr/);
+  const m = s.match(/(\d+)\s*mo/);
+  if (!y && !m) return null;
+  return (y ? Number(y[1]) * 12 : 0) + (m ? Number(m[1]) : 0);
 }
 
 // 370 -> "30 yrs 10 mo"  (matches the toolkit's `len` style)
@@ -146,11 +161,12 @@ export function convert(rawRows, opts = {}) {
     w.tenure * ((r.months || 0) / maxMonths) +
     w.absentee * (r.oos ? 1 : 0);
 
-  // Pass 2 — sort by score, assign ranks, build display fields + notes.
-  return recs
-    .map((r) => ({ r, s: score(r) }))
-    .sort((a, b) => b.s - a.s)
-    .map(({ r }, i) => {
+  // Pass 2 — order rows, assign ranks, build display fields + notes.
+  // A curated list (e.g. a CSV already ranked by an analyst) can keep its
+  // given order with `preserveOrder`; otherwise rank by motivated-seller score.
+  const scored = recs.map((r) => ({ r, s: score(r) }));
+  const ordered = opts.preserveOrder ? scored : scored.sort((a, b) => b.s - a.s);
+  return ordered.map(({ r }, i) => {
       const owned = byOwner.get(r._ownerKey);
       const note = buildNote(r, owned, topUsd);
       return {
@@ -185,6 +201,74 @@ function buildNote(rec, ownerProps, topUsd) {
   return "";
 }
 
+/* ── CSV intake ─────────────────────────────────────────────────────────── */
+
+// Minimal RFC-4180-ish CSV parser: handles quoted fields, embedded commas,
+// and doubled "" escapes. Returns an array of objects keyed by header.
+export function parseCsv(text) {
+  const rows = [];
+  let row = [];
+  let field = "";
+  let inQuotes = false;
+  const s = text.replace(/\r\n?/g, "\n");
+
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (s[i + 1] === '"') { field += '"'; i++; }
+        else inQuotes = false;
+      } else field += c;
+    } else if (c === '"') inQuotes = true;
+    else if (c === ",") { row.push(field); field = ""; }
+    else if (c === "\n") { row.push(field); rows.push(row); row = []; field = ""; }
+    else field += c;
+  }
+  if (field !== "" || row.length) { row.push(field); rows.push(row); }
+
+  const nonEmpty = rows.filter((r) => r.some((v) => v.trim() !== ""));
+  if (nonEmpty.length === 0) return [];
+  const headers = nonEmpty[0].map((h) => h.trim());
+  return nonEmpty.slice(1).map((r) => {
+    const o = {};
+    headers.forEach((h, idx) => (o[h] = (r[idx] ?? "").trim()));
+    return o;
+  });
+}
+
+// Pull a 2-letter state out of an "Out of state (CO) ..." note.
+function stateFromNotes(notes) {
+  const m = String(notes || "").match(/out of state\s*\(([A-Za-z]{2})\)/i);
+  return m ? m[1].toUpperCase() : "";
+}
+
+// Map Propwire/analyst CSV columns onto the raw-row contract `convert` expects.
+// Tolerant of header spelling ("Estimated Equity %" / "Equity %", etc.).
+export function mapPropwireCsv(records, opts = {}) {
+  const homeState = (opts.homeState || HOME_STATE).toUpperCase();
+  const pick = (rec, ...keys) => {
+    for (const k of keys) {
+      const hit = Object.keys(rec).find((h) => h.toLowerCase() === k.toLowerCase());
+      if (hit && rec[hit] !== "") return rec[hit];
+    }
+    return "";
+  };
+  return records.map((rec) => {
+    const notes = pick(rec, "Notes", "Note");
+    const fromNotes = stateFromNotes(notes);
+    const explicitState = pick(rec, "Owner State", "Mailing State");
+    return {
+      owner: pick(rec, "Owner Name", "Owner"),
+      address: pick(rec, "Address", "Property Address"),
+      equityPercent: pick(rec, "Estimated Equity %", "Equity %", "Equity Percent"),
+      equityUsd: pick(rec, "Estimated Equity $", "Equity $", "Equity"),
+      ownedMonths: parseLenToMonths(pick(rec, "Ownership Length", "Owned", "Tenure")),
+      ownerState: (explicitState || fromNotes).toUpperCase(),
+      propertyState: (pick(rec, "Property State") || homeState).toUpperCase(),
+    };
+  });
+}
+
 /* ── output helpers ─────────────────────────────────────────────────────── */
 
 // Render leads as a paste-ready JS array literal in the App.jsx style.
@@ -216,9 +300,23 @@ async function main(argv) {
   }
 
   const fs = await import("node:fs/promises");
-  const raw = JSON.parse(await fs.readFile(inFile, "utf8"));
-  const rows = Array.isArray(raw) ? raw : raw.rows || [];
-  const leads = convert(rows);
+  const text = await fs.readFile(inFile, "utf8");
+  const isCsv = inFile.toLowerCase().endsWith(".csv") || args.includes("--csv");
+
+  let rows;
+  let preserveOrder;
+  if (isCsv) {
+    rows = mapPropwireCsv(parseCsv(text));
+    // A CSV is usually already ranked by a person — keep that order unless
+    // the caller explicitly asks to re-rank by the motivated-seller score.
+    preserveOrder = !args.includes("--rescore");
+  } else {
+    const raw = JSON.parse(text);
+    rows = Array.isArray(raw) ? raw : raw.rows || [];
+    preserveOrder = args.includes("--preserve-order");
+  }
+
+  const leads = convert(rows, { preserveOrder });
   const output = asJson ? JSON.stringify(leads, null, 2) + "\n" : toJsLiteral(leads);
 
   if (outFile) {
